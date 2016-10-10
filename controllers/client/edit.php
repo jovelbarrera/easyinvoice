@@ -2,6 +2,11 @@
 
 require_once '/../../models/Client.php';
 require_once '/../../views/client/EditView.php';
+session_start();
+
+if (!isset($_SESSION['logged'])) {
+    header('Location: ' . DOMAIN_NAME . '/utils/forbidden.php');
+}
 
 if (isset($_GET["id"])) {
     $data = Client::getInstance()->read("id = " . $_GET["id"]);

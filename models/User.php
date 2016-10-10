@@ -31,13 +31,14 @@ final class User extends Model {
         $user = array();
         if ($result->num_rows == 1) {
             while ($row = $result->fetch_assoc()) {
-                $user["username"] = $row["username"];
-                $user["email"] = $row["email"];
-                $user["firstname"] = $row["firstname"];
-                $user["lastname"] = $row["lastname"];
-                $user["created_at"] = $row["created_at"];
-                $user["updated_at"] = $row["updated_at"];
+                $user = $row;
             }
+            session_start();
+            $_SESSION['logged'] = TRUE;
+        } else {
+            $user = array(
+                "error" => "El usuario o contraseña no son validos",
+            );
         }
         $this->close_conection();
         return $user;

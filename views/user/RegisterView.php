@@ -1,5 +1,5 @@
 <?php
-require_once '/../framework/config.php';
+require_once '/../../framework/config.php';
 require_once FRAMEWORK_PATH . '/base/mvc/View.php';
 require_once ROOT_PATH . '/utils/UIBuilder.php';
 require_once ROOT_PATH . '/utils/utils.inc.php';
@@ -20,10 +20,6 @@ class RegisterUserView extends View {
         }
     }
 
-    public function getRootPath() {
-        return ROOT_PATH;
-    }
-
     public function getTitle() {
         return "Iniciar sesión";
     }
@@ -33,7 +29,7 @@ class RegisterUserView extends View {
         ?>
         <div class="container">
             <div class="col-lg-6 col-lg-offset-3">
-                <form class="form-signin" action="register_user.php" method="POST">
+                <form class="form-signin" action="register.php" method="POST">
                     <h2 class="form-signin-heading">Registrar usuario</h2>
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" class="form-control" placeholder="Email" required="" value="<?= $this->data['email'] ?>">
@@ -72,7 +68,7 @@ class RegisterUserView extends View {
     }
 
     public function buildUI() {
-        UIBuilder::getInstance()->buildUI($this->getRootPath(), $this->getTitle(), $this->getContent());
+        UIBuilder::getInstance()->buildUI($this->getTitle(), $this->getContent());
     }
 
 }
