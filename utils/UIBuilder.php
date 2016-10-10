@@ -14,8 +14,8 @@ final class UIBuilder extends Singleton {
         <html lang="en">
             <?= $this->head($title, $path_to_root); ?>
             <body>
-                <?= $body; ?>
                 <?= $this->scripts($path_to_root); ?>
+                <?= $body; ?>
             </body>
         </html>
         <?php

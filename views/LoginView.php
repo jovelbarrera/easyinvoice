@@ -1,7 +1,7 @@
 <?php
 require_once '/../framework/config.php';
 require_once FRAMEWORK_PATH . '/base/mvc/View.php';
-require_once '/../helpers/UIBuilder.php';
+require_once ROOT_PATH . '/utils/UIBuilder.php';
 
 class LoginView extends View {
 
@@ -42,7 +42,6 @@ class LoginView extends View {
                 </form>
             </div>
         </div>
-        <?php print_r($this->data) ?>
         <?php
         return ob_get_clean();
     }
