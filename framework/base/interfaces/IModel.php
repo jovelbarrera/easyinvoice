@@ -14,5 +14,5 @@ interface IModel {
 
     function update($data);
 
-    function delete($data);
+    function delete($where);
 }

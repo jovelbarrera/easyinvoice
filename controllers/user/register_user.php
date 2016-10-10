@@ -1,11 +1,11 @@
 <?php
 
-require_once 'models/User.php';
-require_once 'views/RegisterUserView.php';
+require_once '/../../models/User.php';
+require_once '/../../views/RegisterUserView.php';
 
 if (count($_POST) == 0) {
-    $login_view = new RegisterUserView(NULL, NULL);
-    $login_view->buildUI();
+    $view = new RegisterUserView(NULL, NULL);
+    $view->buildUI();
 } else {
     $data = array(
         "username" => (string) secure_post('email', ''),
@@ -15,6 +15,6 @@ if (count($_POST) == 0) {
         "password" => (string) secure_post('password', ''),
     );
     $response = User::getInstance()->create($data);
-    $login_view = new RegisterUserView($_POST, $response);
-    $login_view->buildUI();
+    $view = new RegisterUserView($_POST, $response);
+    $view->buildUI();
 }

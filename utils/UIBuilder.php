@@ -3,18 +3,18 @@ require_once 'Singleton.php';
 
 final class UIBuilder extends Singleton {
 
-    function buildUI($path_to_root, $title, $body) {
-        echo $this->build($path_to_root, $title, $body);
+    function buildUI($title, $body) {
+        echo $this->build($title, $body);
     }
 
-    private function build($path_to_root, $title, $body) {
+    private function build($title, $body) {
         ob_start();
         ?>
         <!DOCTYPE html>
         <html lang="en">
-            <?= $this->head($title, $path_to_root); ?>
+            <?= $this->head($title); ?>
             <body>
-                <?= $this->scripts($path_to_root); ?>
+                <?= $this->scripts(); ?>
                 <?= $body; ?>
             </body>
         </html>
@@ -22,7 +22,7 @@ final class UIBuilder extends Singleton {
         return ob_get_clean();
     }
 
-    private function head($title, $path_to_root) {
+    private function head($title) {
         ob_start();
         ?>
         <head>
@@ -36,7 +36,7 @@ final class UIBuilder extends Singleton {
         return ob_get_clean();
     }
 
-    private function scripts($path_to_root) {
+    private function scripts() {
         ob_start();
         ?>
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

@@ -10,11 +10,11 @@ class RegisterUserView extends View {
     protected $response = array();
 
     public function __construct($post_data, $response) {
-        if (isset($post_data)) {
-            $this->data["email"] = secure_value($post_data, 'email', '');
-            $this->data["firstname"] = secure_value($post_data, 'firstname', '');
-            $this->data["lastname"] = secure_value($post_data, 'lastname', '');
-        }
+
+        $this->data["email"] = secure_value($post_data, 'email', '');
+        $this->data["firstname"] = secure_value($post_data, 'firstname', '');
+        $this->data["lastname"] = secure_value($post_data, 'lastname', '');
+
         if (isset($response)) {
             $this->response = $response;
         }
@@ -43,11 +43,7 @@ class RegisterUserView extends View {
                     <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellidos" required="" value="<?= $this->data['lastname'] ?>">
                     <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required="">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="remember-me"> Remember me
-                        </label>
-                    </div>
+                    <div>&nbsp;</div>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Registrar</button>
                 </form>
             </div>
