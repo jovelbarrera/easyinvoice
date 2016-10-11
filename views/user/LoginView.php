@@ -31,6 +31,9 @@ class LoginView extends View {
                     <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required="">
                     <div>&nbsp;</div>
+                    <p>
+                        Psst.. usuario: admin@mail.com clave: 12345678
+                    </p>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesion</button>
                 </form>
             </div>

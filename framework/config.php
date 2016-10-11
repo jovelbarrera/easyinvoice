@@ -1,6 +1,6 @@
 <?php
 
-$enviroment = "test";
+$enviroment = "production";
 
 if ($enviroment == "production") {
 // Global settings

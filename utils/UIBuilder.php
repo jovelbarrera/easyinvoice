@@ -1,4 +1,5 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
 require_once 'Singleton.php';
 
 final class UIBuilder extends Singleton {
@@ -15,6 +16,48 @@ final class UIBuilder extends Singleton {
             <?= $this->head($title); ?>
             <body>
                 <?= $this->scripts(); ?>
+                <div class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="<?= DOMAIN_NAME ?>/index.php" class="navbar-brand">Invoice Maker</a>
+                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse" id="navbar-main">
+                            <ul class="nav navbar-nav">                        
+                                <li>
+                                    <a href="<?= DOMAIN_NAME ?>/controllers/client/read.php">Clientes</a>
+                                </li>
+                                <li>
+                                    <a href="<?= DOMAIN_NAME ?>/controllers/user/register.php">Agregar usuario</a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <?php
+                                if (!isset($_SESSION['logged'])) {
+                                    ?>
+                                    <li><a href="<?= DOMAIN_NAME ?>/controllers/user/login.php" >Iniciar sesión</a></li>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <li><a href="<?= DOMAIN_NAME ?>/controllers/user/logout.php" >Cerrar sesión</a></li>
+                                    <?php
+                                }
+                                ?>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
                 <?= $body; ?>
             </body>
         </html>
