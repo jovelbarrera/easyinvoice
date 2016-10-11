@@ -1,6 +1,6 @@
 <?php
 
-require_once '/../../models/Client.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
 require_once '/../../views/client/EditView.php';
 session_start();
 

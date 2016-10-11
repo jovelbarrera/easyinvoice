@@ -1,5 +1,5 @@
 <?php
-require_once '/../../framework/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
 require_once FRAMEWORK_PATH . '/base/mvc/View.php';
 require_once ROOT_PATH . '/utils/UIBuilder.php';
 require_once ROOT_PATH . '/utils/utils.inc.php';

@@ -1,6 +1,6 @@
 <?php
 
-require_once '/../../framework/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
 require_once ROOT_PATH . '/models/User.php';
 require_once ROOT_PATH . '/views/user/RegisterView.php';
 
