@@ -29,7 +29,10 @@ abstract class Model implements IModel {
     abstract public function getDeleteQuery($where);
 
     public function create($data) {
-        $this->open_connection();
+        return array(
+                "error" => "Ocurrio un error"
+            );
+        /*$this->open_connection();
         $sql_data = array_to_mysql($this->link, $data);
         
         $query = $this->getCreateQuery($sql_data['fields'], $sql_data['values']);
@@ -44,7 +47,7 @@ abstract class Model implements IModel {
             );
         }
         $this->close_conection();
-        return $response;
+        return $response;*/
     }
 
     public function readAll() {

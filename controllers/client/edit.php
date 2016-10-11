@@ -28,14 +28,14 @@ if (isset($_GET["id"])) {
         "address" => (string) secure_post('address', ''),
         "phone" => (string) secure_post('phone', ''),
     );
-
-    if (secure_post('id', '') == '') {
+    
+    if (isset($_POST['id']) and $_POST['id'] === '') {
         $response = Client::getInstance()->create($data);
     } else {
         $data['id'] = $_POST['id'];
         $response = Client::getInstance()->update($data);
     }
-
+    
     print_r($response);
 
     header('Location: read.php');
