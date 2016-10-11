@@ -32,15 +32,11 @@ if (isset($_GET["id"])) {
     );
     
     if (isset($_POST['id']) and $_POST['id'] === '') {
-        echo 'create';
         $response = Client::getInstance()->create($data);
     } else {
         $data['id'] = $_POST['id'];
-        echo 'update';
         $response = Client::getInstance()->update($data);
     }
-    
-    print_r($response);
 
     header('Location: read.php');
 }

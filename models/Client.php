@@ -37,10 +37,6 @@ final class Client extends Model {
     public function getDeleteQuery($where) {
         return sprintf("DELETE FROM %s WHERE %s", self::TABLE, $where);
     }
-
-    public function create($data) {
-        print_r($data);
-    }
 }
 
 ?>
