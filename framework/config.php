@@ -2,12 +2,12 @@
 
 // Global settings
 define("APPLICATION_NAME", "Invoice Maker");
-define("DOMAIN_NAME", "http://localhost/invoicemaker");
+define("DOMAIN_NAME", "http://ec2-52-53-212-9.us-west-1.compute.amazonaws.com/invoicemaker");
 define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker");
 define("FRAMEWORK_PATH", ROOT_PATH . "/framework");
 
 // Database settings
 define("DB_SERVERNAME", "localhost");
-define("DB_USERNAME", "root");
-define("DB_PASSWORD", "");
+define("DB_USERNAME", "phpmyadmin");
+define("DB_PASSWORD", "root");
 define("DB_DATABASE", "invoicemaker");
