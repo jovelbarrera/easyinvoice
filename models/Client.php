@@ -1,7 +1,7 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
-require_once FRAMEWORK_PATH . '/utils/utils.inc.php';
+//require_once FRAMEWORK_PATH . '/utils/utils.inc.php';
 require_once FRAMEWORK_PATH . '/base/mvc/Model.php';
 
 final class Client extends Model {
@@ -38,6 +38,9 @@ final class Client extends Model {
         return sprintf("DELETE FROM %s WHERE %s", self::TABLE, $where);
     }
 
+    public function create($data) {
+        print_r($data);
+    }
 }
 
 ?>
