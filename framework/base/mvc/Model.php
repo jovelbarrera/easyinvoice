@@ -1,6 +1,7 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
+require_once FRAMEWORK_PATH . '/utils/utils.inc.php';
 require_once FRAMEWORK_PATH . '/base/interfaces/IModel.php';
 
 abstract class Model implements IModel {
