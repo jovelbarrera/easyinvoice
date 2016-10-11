@@ -31,7 +31,7 @@ abstract class Model implements IModel {
         $this->open_connection();
         $sql_data = array_to_mysql($this->link, $data);
         $query = $this->getCreateQuery($sql_data['fields'], $sql_data['values']);
-
+        echo $query;
         if ($this->link->query($query) === TRUE) {
             $response = array(
                 "success" => "Creado"
