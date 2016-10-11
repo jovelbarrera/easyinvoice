@@ -1,8 +1,10 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
+require_once ROOT_PATH . '/models/Client.php';
 require_once ROOT_PATH . '/utils/utils.inc.php';
 require_once ROOT_PATH . '/views/client/EditView.php';
+
 session_start();
 
 if (!isset($_SESSION['logged'])) {
@@ -30,9 +32,11 @@ if (isset($_GET["id"])) {
     );
     
     if (isset($_POST['id']) and $_POST['id'] === '') {
+        echo 'create';
         $response = Client::getInstance()->create($data);
     } else {
         $data['id'] = $_POST['id'];
+        echo 'update';
         $response = Client::getInstance()->update($data);
     }
     
