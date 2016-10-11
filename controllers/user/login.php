@@ -1,6 +1,6 @@
 <?php
 
-require_once '/../../framework/config.php';
+//require_once '/../../framework/config.php';
 /*require_once ROOT_PATH . '/utils/utils.inc.php';
 require_once ROOT_PATH . '/views/user/LoginView.php';
 require_once ROOT_PATH . '/models/User.php';
@@ -22,4 +22,4 @@ if (count($_POST) == 0) {
         header('Location: ' . DOMAIN_NAME . '/index.php');
     }
 }*/
-echo ROOT_PATH;
+echo "ROOT_PATH";
