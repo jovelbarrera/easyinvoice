@@ -28,8 +28,7 @@ if (isset($_GET["id"])) {
         "address" => (string) secure_post('address', ''),
         "phone" => (string) secure_post('phone', ''),
     );
-    print_r($data);
-    echo $_POST['id'];
+    
     if (isset($_POST['id']) and $_POST['id'] === '') {
         $response = Client::getInstance()->create($data);
     } else {
