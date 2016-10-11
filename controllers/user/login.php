@@ -2,7 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
 require_once ROOT_PATH . '/utils/utils.inc.php';
-require_once ROOT_PATH . '/views/user/LoginView.php';
+//require_once ROOT_PATH . '/views/user/LoginView.php';
 //require_once ROOT_PATH . '/models/User.php';
 
 /*if (count($_POST) == 0) {
