@@ -5,7 +5,7 @@ require_once ROOT_PATH . '/utils/utils.inc.php';
 require_once ROOT_PATH . '/views/user/LoginView.php';
 require_once ROOT_PATH . '/models/User.php';
 
-/*if (count($_POST) == 0) {
+if (count($_POST) == 0) {
     $view = new LoginView(NULL);
     $view->buildUI();
 } else {
@@ -21,7 +21,5 @@ require_once ROOT_PATH . '/models/User.php';
     } else {
         header('Location: ' . DOMAIN_NAME . '/index.php');
     }
-}*/
-
-echo ROOT_PATH . '/utils/utils.inc.php';
+}
 
