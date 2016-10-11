@@ -1,7 +1,7 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
-require_once '/../../views/client/EditView.php';
+require_once ROOT_PATH . '/views/client/EditView.php';
 session_start();
 
 if (!isset($_SESSION['logged'])) {
