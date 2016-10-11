@@ -22,6 +22,10 @@ if (count($_POST) == 0) {
         "password" => (string) secure_post('password', ''),
     );
     $response = User::getInstance()->create($data);
-    $view = new RegisterUserView($_POST, $response);
-    $view->buildUI();
+    if (isset($response['error'])) {
+        $view = new RegisterUserView($_POST, $response);
+        $view->buildUI();
+    } else {
+        header('Location: ' . DOMAIN_NAME);
+    }
 }
