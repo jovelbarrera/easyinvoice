@@ -29,8 +29,9 @@ abstract class Model implements IModel {
     abstract public function getDeleteQuery($where);
 
     public function create($data) {
-        $this->open_connection();
+        
         print_r($data);
+        $this->open_connection();
         $sql_data = array_to_mysql($this->link, $data);
         
         $query = $this->getCreateQuery($sql_data['fields'], $sql_data['values']);
