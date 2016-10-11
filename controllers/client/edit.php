@@ -22,16 +22,19 @@ if (isset($_GET["id"])) {
     $view = new EditView(NULL, NULL);
     $view->buildUI();
 } else {
+    echo 'yeap';
     $data = array(
         "name" => (string) secure_post('name', ''),
         "nit" => (string) secure_post('nit', ''),
         "address" => (string) secure_post('address', ''),
         "phone" => (string) secure_post('phone', ''),
     );
-
+    echo 'works';
     if (isset($_POST['id']) and $_POST['id'] === '') {
+        echo 'create';
         $response = Client::getInstance()->create($data);
     } else {
+        echo 'update';
         $data['id'] = $_POST['id'];
         $response = Client::getInstance()->update($data);
     }
