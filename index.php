@@ -1,6 +1,6 @@
 <?php
 
-use framework\Dispatcher;
+//use framework\Dispatcher;
 
 try {
     require_once (__DIR__ . '/framework/loader.php');
