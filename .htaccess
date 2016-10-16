@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    RewriteRule ^(invoicemaker/application/assets/bootstrap/css/)($|/) - [L]
+
+    RewriteRule ^([^/]+)/?$ index.php?controller=$1&action=index [L,QSA]
+    RewriteRule ^([^/]+)/([^/]+)?$ index.php?controller=$1&action=$2 [L,QSA]
+    RewriteRule ^([^/]+)/([^/]+)/(.+)?$ index.php?controller=$1&action=$2&parameters=$3 [L,QSA]
+    RewriteRule ^([^/]+)/?$ index.php?controller=home&action=index&parameters [L,QSA]
+</IfModule>
