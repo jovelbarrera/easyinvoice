@@ -10,6 +10,8 @@ echo '<pre>';
 print_r($files1);
 print_r($files2);
 echo '</pre>';
+
+echo " Existe: " . file_exists (__DIR__.'/framework/loader.php');
 try {
     require_once ('./framework/loader.php');
 } catch (Exception $ex) {
