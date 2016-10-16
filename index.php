@@ -1,17 +1,19 @@
 <?php
 
 //use framework\Dispatcher;
-echo $_SERVER['DOCUMENT_ROOT'];
+echo __DIR__."<br>";
 $dir = __DIR__;
 $files1 = scandir($dir);
 $files2 = scandir($dir, 1);
 
+echo '<pre>';
 print_r($files1);
 print_r($files2);
+echo '</pre>';
 try {
-    require_once ('framework/loader.php');
+    require_once ('./framework/loader.php');
 } catch (Exception $ex) {
-    $ex->getMessage();
+    echo $ex->getMessage();
 }
 //require_once (__DIR__ . '/framework/loader.php');
 //require_once (__DIR__ . '/framework/Dispatcher.php');
