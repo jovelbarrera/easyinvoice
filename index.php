@@ -1,7 +1,7 @@
 <?php
 
 //use framework\Dispatcher;
-
+echo __DIR__;
 require_once (__DIR__ . '/framework/loader.php');
 //require_once (__DIR__ . '/framework/loader.php');
 //require_once (__DIR__ . '/framework/Dispatcher.php');

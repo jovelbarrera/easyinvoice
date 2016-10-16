@@ -19,7 +19,8 @@ final class Config {
 
         $app["production"] = array(
             "application_name" => "Invoice Maker",
-            "domain_name" => "http://ec2-52-53-212-9.us-west-1.compute.amazonaws.com/invoicemaker",
+            //"domain_name" => "http://ec2-52-53-212-9.us-west-1.compute.amazonaws.com/invoicemaker",
+            "domain_name" => "https://easyinvoice.herokuapp.com",
             "root_path" => $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker",
             "application_path" => $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker/app",
             "framework_path" => $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker/framework",
