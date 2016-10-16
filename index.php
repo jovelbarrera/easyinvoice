@@ -2,7 +2,7 @@
 
 //use framework\Dispatcher;
 echo $_SERVER['DOCUMENT_ROOT'];
-//require_once ($_SERVER['DOCUMENT_ROOT'] . '/framework/loader.php');
+require_once ('/framework/loader.php');
 //require_once (__DIR__ . '/framework/loader.php');
 //require_once (__DIR__ . '/framework/Dispatcher.php');
 
