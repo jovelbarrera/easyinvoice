@@ -13,11 +13,14 @@ use framework\Routes;
 final class Dispatcher {
 
     function handle($controller, $action, $parameters) {
+        print_r($controller);
         $routes_instance = new Routes();
+         print_r($action);
         $routes = $routes_instance->routes;
+        print_r($parameters);
         $route_name = $controller . "/" . $action;
         $route_exist = array_key_exists($route_name, $routes);
-        print_r($routes);
+        
         if ($route_exist) {
             if (count($parameters) >= count($routes[$route_name])) {
                 $class_name = 'app\controllers\\' . ucfirst($controller) . "Controller";
