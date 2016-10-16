@@ -8,7 +8,7 @@ $files2 = scandir($dir, 1);
 
 print_r($files1);
 print_r($files2);
-//require_once ('framework/loader.php');
+require_once ('framework/loader.php');
 //require_once (__DIR__ . '/framework/loader.php');
 //require_once (__DIR__ . '/framework/Dispatcher.php');
 
