@@ -10,5 +10,5 @@ $action = isset($_GET['action']) ? $_GET['action'] : "index";
 $raw_parameters = isset($_GET['parameters']) ? $_GET['parameters'] : "";
 $parameters = $raw_parameters == "" ? array() : explode("/", $raw_parameters);
 
-$dispatcher = new Dispatcher();
+$dispatcher = new dispatcher();
 $dispatcher->handle($controller, $action, $parameters);
