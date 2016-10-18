@@ -1,5 +1,7 @@
 <?php
 
+namespace framework;
+
 use framework\routes;
 
 //require_once (__DIR__ . '/loader.php');
@@ -18,8 +20,8 @@ final class dispatcher {
         if ($route_exist) {
             if (count($parameters) >= count($routes[$route_name])) {
                 $class_name = 'app\controllers\\' . ucfirst($controller) . "Controller";
-                $class = new ReflectionClass($class_name);
-                $reflectionMethod = new ReflectionMethod($class_name, $action);
+                $class = new \ReflectionClass($class_name);
+                $reflectionMethod = new \ReflectionMethod($class_name, $action);
                 $reflectionMethod->invokeArgs($class->newInstanceArgs(), $parameters);
             }
         }
