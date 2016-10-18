@@ -6,10 +6,10 @@ spl_autoload_register(function ($class_name) {
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             $include = $class_name;
         } else {
-            $include = __DIR__ . "/" . strtolower(str_replace("\\", "/", $class_name));
+            $include = strtolower(str_replace("\\", "/", $class_name));
         }
         echo PHP_OS;
-        echo '<br>';
+        echo '\n';
         echo $include;
         spl_autoload($include);
     } catch (Exception $ex) {

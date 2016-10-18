@@ -1,6 +1,6 @@
 <?php
 
-use framework\Routes;
+use framework\routes;
 
 //require_once (__DIR__ . '/loader.php');
 /* require_once ('Config.php');
@@ -10,7 +10,7 @@ use framework\Routes;
 final class dispatcher {
 
     function handle($controller, $action, $parameters) {
-        $routes_instance = new Routes();
+        $routes_instance = new routes();
         $routes = $routes_instance->routes;
         $route_name = $controller . "/" . $action;
         $route_exist = array_key_exists($route_name, $routes);
