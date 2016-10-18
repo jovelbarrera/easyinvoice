@@ -7,7 +7,7 @@ use framework\Routes;
   require_once ('Routes.php');
  */
 
-final class Dispatcher {
+final class dispatcher {
 
     function handle($controller, $action, $parameters) {
         $routes_instance = new Routes();
