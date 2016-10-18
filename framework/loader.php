@@ -18,7 +18,7 @@ spl_autoload_register(function ($class_name) {
             }
             $file_name .= str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
         }
-        echo $file_name;
+        echo $_SERVER['DOCUMENT_ROOT'] . '/easyinvoice/' .$file_name;
         require_once ($_SERVER['DOCUMENT_ROOT'] . '/easyinvoice/' . $file_name);
     } catch (Exception $ex) {
         //echo $ex->getMessage();
