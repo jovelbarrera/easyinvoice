@@ -2,12 +2,16 @@
 
 spl_autoload_register(function ($class_name) {
     try {
-        echo $class_name;
+        
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            spl_autoload($class_name);
+            $include = $class_name;
         } else {
-            spl_autoload(strtolower(str_replace("\\", "/", $class_name)));
+            $include = strtolower(str_replace("\\", "/", $class_name));
         }
+        echo PHP_OS;
+        echo '<br>';
+        echo $include;
+        spl_autoload($include);
     } catch (Exception $ex) {
         //echo $ex->getMessage();
         echo 'spl_autoload_register';
