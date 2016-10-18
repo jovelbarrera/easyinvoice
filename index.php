@@ -2,7 +2,6 @@
 
 require_once (__DIR__ . '/framework/loader.php');
 
-use framework\dispatcher;
 //require_once (__DIR__ . '/framework/loader.php');
 //require_once (__DIR__ . '/framework/Dispatcher.php');
 
