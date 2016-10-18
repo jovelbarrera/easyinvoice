@@ -11,19 +11,19 @@ final class Config {
 
         $app["test"] = array(
             "application_name" => "Invoice Maker",
-            "domain_name" => "http://localhost/invoicemaker",
-            "root_path" => $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker",
-            "application_path" => $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker/app",
-            "framework_path" => $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker/framework",
+            "domain_name" => "http://localhost/easyinvoice",
+            "root_path" => $_SERVER['DOCUMENT_ROOT'] . "/easyinvoice",
+            "application_path" => $_SERVER['DOCUMENT_ROOT'] . "/easyinvoice/app",
+            "framework_path" => $_SERVER['DOCUMENT_ROOT'] . "/easyinvoice/framework",
         );
 
         $app["production"] = array(
             "application_name" => "Invoice Maker",
-            //"domain_name" => "http://ec2-52-53-212-9.us-west-1.compute.amazonaws.com/invoicemaker",
+            //"domain_name" => "http://ec2-52-53-212-9.us-west-1.compute.amazonaws.com/easyinvoice",
             "domain_name" => "https://easyinvoice.herokuapp.com",
-            "root_path" => $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker",
-            "application_path" => $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker/app",
-            "framework_path" => $_SERVER['DOCUMENT_ROOT'] . "/invoicemaker/framework",
+            "root_path" => $_SERVER['DOCUMENT_ROOT'] . "/easyinvoice",
+            "application_path" => $_SERVER['DOCUMENT_ROOT'] . "/easyinvoice/app",
+            "framework_path" => $_SERVER['DOCUMENT_ROOT'] . "/easyinvoice/framework",
         );
 
         $db['test'] = array(

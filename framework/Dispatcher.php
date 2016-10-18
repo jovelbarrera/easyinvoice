@@ -2,17 +2,17 @@
 
 namespace framework;
 
-use framework\routes;
+use framework\Routes;
 
 //require_once (__DIR__ . '/loader.php');
 /* require_once ('Config.php');
   require_once ('Routes.php');
  */
 
-final class dispatcher {
+final class Dispatcher {
 
     function handle($controller, $action, $parameters) {
-        $routes_instance = new routes();
+        $routes_instance = new Routes();
         $routes = $routes_instance->routes;
         $route_name = $controller . "/" . $action;
         $route_exist = array_key_exists($route_name, $routes);
