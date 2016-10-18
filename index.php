@@ -3,7 +3,7 @@
 require_once (__DIR__ . '/framework/loader.php');
 
 //require_once (__DIR__ . '/framework/loader.php');
-//require_once (__DIR__ . '/framework/Dispatcher.php');
+require_once (__DIR__ . '/framework/Dispatcher.php');
 
 $controller = isset($_GET['controller']) ? $_GET['controller'] : "home";
 $action = isset($_GET['action']) ? $_GET['action'] : "index";
