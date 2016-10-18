@@ -2,7 +2,7 @@
 
 namespace framework;
 
-class Routes {
+class routes {
 
     var $routes = array();
 
