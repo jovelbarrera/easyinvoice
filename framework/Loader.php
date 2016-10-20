@@ -12,7 +12,7 @@ spl_autoload_register(function ($class_name) {
             $class_name = substr($class_name, $lastNsPos + 1);
             $file_name = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
         }
-        $file_name .= str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
+        //$file_name .= str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
         $file_name .= $class_name . '.php';
 
         $full_path = $_SERVER['DOCUMENT_ROOT'] . '/easyinvoice/' . $file_name;
