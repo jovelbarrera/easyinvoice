@@ -30,14 +30,14 @@ final class Config {
             "hostname" => "localhost",
             "username" => "root",
             "password" => "",
-            "database" => "invoicemaker",
+            "database" => "easyinvoice",
         );
 
         $db['production'] = array(
             "hostname" => "localhost",
             "username" => "phpmyadmin",
             "password" => "root",
-            "database" => "invoicemaker",
+            "database" => "easyinvoice",
         );
 
         if ($this->config["enviroment"] == "production") {
