@@ -7,7 +7,7 @@ final class Config {
     var $config = array();
 
     function __construct() {
-        $this->config["enviroment"] = "test";
+        $this->config["enviroment"] = "production";
 
         $app["test"] = array(
             "application_name" => "Invoice Maker",
