@@ -17,6 +17,9 @@ final class Dispatcher {
         $route_name = $controller . "/" . $action;
         $route_exist = array_key_exists($route_name, $routes);
         print_r($routes);
+        print_r($controller);
+        print_r($action);
+        print_r($parameters);
         if ($route_exist) {
             echo 'here';
             if (count($parameters) >= count($routes[$route_name])) {
