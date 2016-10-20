@@ -4,10 +4,6 @@ namespace framework;
 
 spl_autoload_register(function ($class_name) {
     try {
-
-//        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-//            $file_name = "\\" . $class_name;
-//        } else {
         $class_name = ltrim($class_name, '\\');
         $file_name = '';
         $namespace = '';
@@ -17,12 +13,12 @@ spl_autoload_register(function ($class_name) {
             $file_name = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
         }
         $file_name .= str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
-//        }
-        $full_path = $_SERVER['DOCUMENT_ROOT'] . '/easyinvoice/' . strtolower($file_name);
-        //echo $full_path." existe:".file_exists($full_path)."- ";
+        $file_name .= $class_name . '.php';
+
+        $full_path = $_SERVER['DOCUMENT_ROOT'] . '/easyinvoice/' . $file_name;
+        echo $full_path." existe:".file_exists($full_path)."- ";
         require_once ($full_path);
     } catch (Exception $ex) {
-        //echo $ex->getMessage();
-        echo 'spl_autoload_register';
+        echo $ex->getMessage();
     }
 });
