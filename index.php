@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__ . '/framework/loader.php');
+require_once (__DIR__ . '/framework/Loader.php');
 
 use framework\Dispatcher;
 
