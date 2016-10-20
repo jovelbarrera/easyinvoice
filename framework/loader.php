@@ -20,7 +20,7 @@ spl_autoload_register(function ($class_name) {
 //        }
         $full_path = $_SERVER['DOCUMENT_ROOT'] . '/easyinvoice/' . strtolower($file_name);
         echo $full_path;
-        require_once ($full_path);
+        require ($full_path);
     } catch (Exception $ex) {
         //echo $ex->getMessage();
         echo 'spl_autoload_register';
