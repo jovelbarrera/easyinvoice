@@ -18,6 +18,7 @@ final class Dispatcher {
         $route_exist = array_key_exists($route_name, $routes);
         
         if ($route_exist) {
+            echo 'here';
             if (count($parameters) >= count($routes[$route_name])) {
                 $class_name = 'app\controllers\\' . ucfirst($controller) . "Controller";
                 $class = new \ReflectionClass($class_name);
