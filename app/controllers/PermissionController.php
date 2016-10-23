@@ -3,10 +3,10 @@
 namespace app\controllers;
 
 use framework\core\Controller;
-use app\models\Client;
+use app\models\Permission;
 use app\helpers\UIHelper;
 
-class ClientController extends Controller {
+class PermissionController extends Controller {
 
     function __construct() {
         parent::__construct();
@@ -16,22 +16,22 @@ class ClientController extends Controller {
     public function index() {
         $data = array();
         $data['base_url'] = $this->config['app']['domain_name'];
-        $data['title'] = "Listado de usuarios";
-        $response = Client::getInstance()->read();
+        $data['title'] = "Listado de Permisos";
+        $response = Permission::getInstance()->read();
         if (isset($response['error'])) {
             $data['error'] = $response['error'];
         } else {
             $data['data'] = $response;
         }
-        UIHelper::layout($this, "client/index", $data);
+        UIHelper::layout($this, "settings/permission/index", $data);
     }
 
     public function detail($id) {
-        $response = Client::getInstance()->read(NULL, array("id" => $id));
+        $response = Permission::getInstance()->read(NULL, array("id" => $id));
 
         $data = array();
         $data['base_url'] = $this->config['app']['domain_name'];
-        $data ['title'] = "Detalle de usuario";
+        $data ['title'] = "Detalle de Permiso";
 
         if (isset($response["error"])) {
             $data['message'] = $response['error'];
@@ -39,40 +39,39 @@ class ClientController extends Controller {
             $data['data'] = $response[0];
         }
 
-        UIHelper::layout($this, "client/detail", $data);
+        UIHelper::layout($this, "settings/permission/detail", $data);
     }
 
     public function create() {
         $data = array();
         $data['base_url'] = $this->config['app']['domain_name'];
-        $data['title'] = "Crear usuario";
+        $data['title'] = "Crear Permiso";
 
         if ($this->isPostRequest()) {
-            $response = Client::getInstance()->create($this->post);
+            $response = Permission::getInstance()->create($this->post);
             if (isset($response['id'])) {
-                //header("Location: " . $data['base_url'] . "/client/detail/" . $response['id']);
                 $this->detail($response['id']);
             }
             return;
         }
 
-        UIHelper::layout($this, "client/create", $data);
+        UIHelper::layout($this, "settings/permission/create", $data);
     }
 
     public function edit($id) {
         $data = array();
         $data['base_url'] = $this->config['app']['domain_name'];
-        $data['title'] = "Editar usuario";
+        $data['title'] = "Editar Permiso";
 
         if ($this->isPostRequest()) {
-            $response = Client::getInstance()->update($this->post);
+            $response = Permission::getInstance()->update($this->post);
             if (isset($response['success'])) {
-                header("Location: " . $data['base_url'] . "/client/");
+                header("Location: " . $data['base_url'] . "/permission/");
             }
             return;
         }
 
-        $response = Client::getInstance()->read(NULL, array("id" => $id));
+        $response = Permission::getInstance()->read(NULL, array("id" => $id));
 
         if (isset($response["error"])) {
             $data['message'] = $response['error'];
@@ -80,23 +79,23 @@ class ClientController extends Controller {
             $data['data'] = $response[0];
         }
 
-        UIHelper::layout($this, "client/edit", $data);
+        UIHelper::layout($this, "settings/permission/edit", $data);
     }
 
     public function delete($id) {
         $data = array();
         $data['base_url'] = $this->config['app']['domain_name'];
-        $data['title'] = "Eliminar de usuario";
+        $data['title'] = "Eliminar de Permiso";
 
         if ($this->isPostRequest()) {
-            $response = Client::getInstance()->delete($id);
+            $response = Permission::getInstance()->delete($id);
             if (isset($response['success'])) {
-                header("Location: " . $data['base_url'] . "/client/");
+                header("Location: " . $data['base_url'] . "/permission/");
             }
             return;
         }
 
-        $response = Client::getInstance()->read(NULL, array("id" => $id));
+        $response = Permission::getInstance()->read(NULL, array("id" => $id));
 
         if (isset($response['error'])) {
             $data['message'] = $response['error'];
@@ -104,7 +103,7 @@ class ClientController extends Controller {
             $data['data'] = $response[0];
         }
 
-        UIHelper::layout($this, "client/delete", $data);
+        UIHelper::layout($this, "settings/permission/delete", $data);
     }
 
 }

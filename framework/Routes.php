@@ -12,6 +12,20 @@ class Routes {
         $this->routes["client/edit"] = array("id");
         $this->routes["client/detail"] = array("id");
         $this->routes["client/delete"] = array();
+        
+        
+        $this->routes["permission/index"] = array();
+        $this->routes["permission/create"] = array();
+        $this->routes["permission/edit"] = array("id");
+        $this->routes["permission/detail"] = array("id");
+        $this->routes["permission/delete"] = array();
+        
+        $this->routes["role/index"] = array();
+        $this->routes["role/create"] = array();
+        $this->routes["role/edit"] = array("id");
+        $this->routes["role/detail"] = array("id");
+        $this->routes["role/delete"] = array();        
+        $this->routes["role/assign"] = array("role_id");
     }
 
 }

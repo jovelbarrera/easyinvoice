@@ -1,4 +1,3 @@
-
 <div class="container">
     <div class="col-lg-6 col-lg-offset-3">
 
@@ -15,7 +14,7 @@
         <div><?= Helper::getValueSecurely($data['data'], 'phone', '') ?></div>
         <div>&nbsp;</div>
         <a href="<?= $data['base_url'] ?>/client/index" class="btn btn-default">Regresar</a>
-        <a href="<?= $data['base_url'] ?>/client/delete/<?= Helper::getValueSecurely($data['data'], 'id', '') ?>" class="btn btn-danger">Eliminar</a>
+        <a href="<?= $data['base_url'] ?>/client/delete/<?= Helper::getValueSecurely($data['data'], 'id', '') ?>" class="btn btn-primary">Eliminar</a>
 
     </div>
 </div>

@@ -17,11 +17,11 @@ spl_autoload_register(function ($class) {
         $file_name .= $class_path . '.php';
 
         $config = new Config();
-        $root_path = $config->config['app']['root_path'] . "/";
+        $root_path = $config->config['app']['root_path'] . DIRECTORY_SEPARATOR;
         $full_path = $root_path . $file_name;
 
 //        $full_path = $_SERVER['DOCUMENT_ROOT'] . '/easyinvoice/' . $file_name;
-
+        
         require_once ($full_path);
     } catch (Exception $ex) {
         echo $ex->getMessage();

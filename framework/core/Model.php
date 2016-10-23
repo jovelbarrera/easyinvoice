@@ -14,13 +14,12 @@ use framework\utils\Singleton;
   require_once (__DIR__ . '/IDBService.php');
  */
 
-abstract class Model extends Singleton implements IModel {
+abstract class Model implements IModel {
 
     private $link;
     private $config;
 
     protected function __construct() {
-        parent::__construct();
         $this->config = (new Config())->config;
     }
 
@@ -38,20 +37,30 @@ abstract class Model extends Singleton implements IModel {
 
     abstract function getTable();
 
-    public function getCreateQuery($table, $fields, $values) {
+    public function getCreateQuery($table, $data) {
+        $sql_data = Utils::arrayToInsertQuery($this->link, $data);
+        $fields = $sql_data['fields'];
+        $values = $sql_data['values'];
         return sprintf("INSERT INTO %s (%s) VALUES (%s)", $table, $fields, $values);
     }
 
-    public function getReadQuery($table, $where) {
+    public function getReadQuery($table, $fields, $where) {
+        $fields_string = "*";
+        if ($fields != NULL) {
+            $fields_string = Utils::arrayValuesToString($this->link, $fields);
+        }
+
         if ($where == NULL) {
-            return sprintf("SELECT * FROM %s", $table);
+            return sprintf("SELECT %s FROM %s", $fields_string, $table);
         } else {
-            return sprintf("SELECT * FROM %s WHERE %s", $table, $where);
+            $where_string = Utils::arrayToString($this->link, $where);
+            return sprintf("SELECT %s FROM %s WHERE %s", $fields_string, $table, $where_string);
         }
     }
 
-    public function getUpdateQuery($table, $fields, $values) {
-        return sprintf("REPLACE INTO %s (%s) VALUES (%s)", $table, $fields, $values);
+    public function getUpdateQuery($table, $id, $values) {
+        //return sprintf("REPLACE INTO %s (%s) VALUES (%s)", $table, $fields, $values);
+        return sprintf("UPDATE %s SET %s WHERE id = %s", $table, $values, $id);
     }
 
     public function getDeleteQuery($table, $where) {
@@ -62,9 +71,7 @@ abstract class Model extends Singleton implements IModel {
 
     public function create($data) {
         $this->openConnection();
-        $sql_data = Utils::arrayToMysql($this->link, $data);
-
-        $query = $this->getCreateQuery($this->getTable(), $sql_data['fields'], $sql_data['values']);
+        $query = $this->getCreateQuery($this->getTable(), $data);
 
         if ($this->link->query($query) === TRUE) {
             $response = array(
@@ -79,32 +86,15 @@ abstract class Model extends Singleton implements IModel {
         return $response;
     }
 
-    public function readAll() {
+    public function read($fields = NULL, $where = NULL) {
         $this->openConnection();
-        $query = $this->getReadQuery($this->getTable(), NULL);
+        $query = $this->getReadQuery($this->getTable(), $fields, $where);
+
         $result = $this->link->query($query);
 
         $response = array();
-        while ($row = $result->fetch_assoc()) {
-            array_push($response, $row);
-        }
-        $this->closeConection();
-
-        if (count($response) < 1) {
-            $response = array(
-                "error" => "Sin resultados"
-            );
-        }
-        return $response;
-    }
-
-    public function read($where) {
-        $this->openConnection();
-        $query = $this->getReadQuery($this->getTable(), mysqli_real_escape_string($this->link, $where));
-        $result = $this->link->query($query);
-
-        $response = array();
-
+        print_r($query);
+        print_r($this->link->error_list);
         while ($row = $result->fetch_assoc()) {
             array_push($response, $row);
         }
@@ -120,8 +110,9 @@ abstract class Model extends Singleton implements IModel {
 
     public function update($data) {
         $this->openConnection();
-        $sql_data = Utils::arrayToMysql($this->link, $data);
-        $query = $this->getUpdateQuery($this->getTable(), $sql_data['fields'], $sql_data['values']);
+        $sql_data = Utils::arrayToUpdateQuery($this->link, $data);
+
+        $query = $this->getUpdateQuery($this->getTable(), $sql_data['id'], $sql_data['values']);
 
         if ($this->link->query($query) === TRUE) {
             $response = array(
@@ -152,6 +143,25 @@ abstract class Model extends Singleton implements IModel {
             );
         }
         $this->closeConection();
+        return $response;
+    }
+
+    function readQuery($query) {
+        $this->openConnection();
+
+        $result = $this->link->query(mysqli_real_escape_string($this->link, $query));
+
+        $response = array();
+        while ($row = $result->fetch_assoc()) {
+            array_push($response, $row);
+        }
+        $this->closeConection();
+
+        if (count($response) < 1) {
+            $response = array(
+                "error" => "Sin resultados"
+            );
+        }
         return $response;
     }
 

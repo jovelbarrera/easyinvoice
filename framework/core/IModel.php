@@ -14,9 +14,9 @@ interface IModel {
 
     function create($data);
 
-    function readAll();
+    function readQuery($query);
 
-    function read($where);
+    function read($fields, $where);
 
     function update($data);
 

@@ -1,7 +1,7 @@
 <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a href="<?= $data['base_url'] ?>" class="navbar-brand">Invoice Maker</a>
+            <a href="<?= $data['base_url'] ?>" class="navbar-brand">Easy Invoice</a>
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -9,12 +9,26 @@
             </button>
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
-            <ul class="nav navbar-nav">                        
-                <li>
-                    <a href="<?= $data['base_url'] ?>/client">Clientes</a>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Clientes <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="<?= $data['base_url'] ?>/client">Clientes</a></li>
+                        <li><a href="<?= $data['base_url'] ?>/client/create">Registrar Cliente</a></li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="<?= $data['base_url'] ?>/user/create">Agregar usuario</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Configuración <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="<?= $data['base_url'] ?>/role">Roles</a></li>
+                        <li><a href="<?= $data['base_url'] ?>/role/create">Nuevo Rol</a></li>
+                        <li class="divider"></li>
+                        <li><a href="<?= $data['base_url'] ?>/permission">Permisos</a></li>
+                        <li><a href="<?= $data['base_url'] ?>/permission/create">Nuevo Permiso</a></li>
+                        <li class="divider"></li>
+                        <li><a href="<?= $data['base_url'] ?>/user">Usuarios</a></li>
+                        <li><a href="<?= $data['base_url'] ?>/user/create">Nuevo Usuario</a></li>
+                    </ul>
                 </li>
             </ul>
 
