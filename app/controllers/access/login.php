@@ -1,5 +1,5 @@
 <?php
-
+// Merge?
 //require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
 //require_once ROOT_PATH . '/utils/utils.inc.php';
 //require_once ROOT_PATH . '/views/access/LoginView.php';
