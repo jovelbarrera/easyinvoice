@@ -27,8 +27,8 @@ final class Config {
 
         $db['test'] = array(
             "hostname" => "localhost",
-            "username" => "root",
-            "password" => "",
+            "username" => "phpmyadmin",
+            "password" => "root",
             "database" => "easyinvoice",
         );
 

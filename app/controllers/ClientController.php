@@ -89,7 +89,7 @@ class ClientController extends Controller {
         $data['title'] = "Eliminar de usuario";
 
         if ($this->isPostRequest()) {
-            $response = Client::getInstance()->delete($id);
+            $response = Client::getInstance()->delete(array('id' => $id));
             if (isset($response['success'])) {
                 header("Location: " . $data['base_url'] . "/client/");
             }

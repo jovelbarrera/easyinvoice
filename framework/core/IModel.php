@@ -20,5 +20,5 @@ interface IModel {
 
     function update($data);
 
-    function delete($id);
+    function delete($where);
 }

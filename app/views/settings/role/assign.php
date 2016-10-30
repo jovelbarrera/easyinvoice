@@ -1,12 +1,19 @@
 <div class="container">
-    <h2 class="form-signin-heading">Permisos de <?= Helper::getValueSecurely($data['data'], 'role_name', '') ?></h2>
     <?php
+    $role = Helper::getValueSecurely($data['data'], 'role', '');
+    $permissions = Helper::getValueSecurely($data['data'], 'permissions', '');
+    $granted_permissions = Helper::getValueSecurely($data['data'], 'granted_permissions', '');
+    ?>
+    <h2 class="form-signin-heading">Permisos <?= Helper::getValueSecurely($role, 'name', '') ?></h2>
+    <?php
+    if ($permissions == '' or $granted_permissions == '') {
+        $data['error'] = "Ocurrió un error";
+    }
     if (isset($data['error'])) {
         ?>
         <div class="row">
             <div class="col-lg-12">
                 <div class="alert alert-dismissible alert-danger">
-                    <!--                    <button type="button" class="close" data-dismiss="alert">&times;</button>-->
                     <strong><?= Helper::getValueSecurely($data, 'error', '') ?></strong>
                 </div>
             </div>
@@ -14,7 +21,7 @@
         <?php
     } else {
         ?>
-        <form action="<?= $data['base_url'] ?>/role/assign" method="POST">
+        <form action="<?= $data['base_url'] ?>/role/assign/<?= Helper::getValueSecurely($role, 'id', '') ?>" method="POST">
             <table class="table table-striped table-hover ">
                 <thead>
                     <tr>
@@ -24,12 +31,12 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($data['data']['permissions'] as $permission_key => $permission) {
-                        $permission_name = Helper::getValueSecurely($permission, 'permission_name', '');
-                        $permission_id = Helper::getValueSecurely($permission, 'permission_id', '');
+                    foreach ($permissions as $permission_key => $permission) {
+                        $permission_name = Helper::getValueSecurely($permission, 'name', '');
+                        $permission_id = Helper::getValueSecurely($permission, 'id', '');
                         $is_granted = FALSE;
-                        foreach ($data['data']['granted_permissions'] as $granted_permission_key => $granted_permission) {
-                            if (Helper::getValueSecurely($permission, 'permission_id', '') == Helper::getValueSecurely($granted_permission, 'id', '')) {
+                        foreach ($granted_permissions as $granted_permission_key => $granted_permission) {
+                            if (Helper::getValueSecurely($permission, 'id', '') == Helper::getValueSecurely($granted_permission, 'permission', '')) {
                                 $is_granted = TRUE;
                             }
                         }

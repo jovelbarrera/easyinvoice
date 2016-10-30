@@ -5,7 +5,6 @@ namespace framework\core;
 use framework\Config;
 use framework\core\IModel;
 use framework\utils\Utils;
-use framework\utils\Singleton;
 
 /* require_once (__DIR__ . '/../utils/Utils.php');
   require_once (__DIR__ . '/../utils/Singleton.php');
@@ -53,7 +52,7 @@ abstract class Model implements IModel {
         if ($where == NULL) {
             return sprintf("SELECT %s FROM %s", $fields_string, $table);
         } else {
-            $where_string = Utils::arrayToString($this->link, $where);
+            $where_string = str_replace(","," and ", Utils::arrayToString($this->link, $where));
             return sprintf("SELECT %s FROM %s WHERE %s", $fields_string, $table, $where_string);
         }
     }
@@ -64,10 +63,11 @@ abstract class Model implements IModel {
     }
 
     public function getDeleteQuery($table, $where) {
-        return sprintf("DELETE FROM %s WHERE %s", $table, $where);
+        $where_string = Utils::arrayToString($this->link, $where);
+        return sprintf("DELETE FROM %s WHERE %s", $table, $where_string);
     }
 
-    // IDBService implementation
+    // IModel implementation
 
     public function create($data) {
         $this->openConnection();
@@ -93,8 +93,8 @@ abstract class Model implements IModel {
         $result = $this->link->query($query);
 
         $response = array();
-        print_r($query);
-        print_r($this->link->error_list);
+//        print_r($query);
+//        print_r($this->link->error_list);
         while ($row = $result->fetch_assoc()) {
             array_push($response, $row);
         }
@@ -127,11 +127,9 @@ abstract class Model implements IModel {
         return $response;
     }
 
-    public function delete($id) {
-        $where = " id = " . $id;
-
+    public function delete($where) {
         $this->openConnection();
-        $query = $this->getDeleteQuery($this->getTable(), mysqli_real_escape_string($this->link, $where));
+        $query = $this->getDeleteQuery($this->getTable(), $where);
 
         if ($this->link->query($query) === TRUE) {
             $response = array(

@@ -26,6 +26,10 @@ class Routes {
         $this->routes["role/detail"] = array("id");
         $this->routes["role/delete"] = array();        
         $this->routes["role/assign"] = array("role_id");
+        
+        $this->routes["user/index"] = array();
+        $this->routes["user/login"] = array();
+        $this->routes["user/create"] = array();
     }
 
 }

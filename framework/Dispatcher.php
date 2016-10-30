@@ -27,10 +27,12 @@ final class Dispatcher {
                 $reflectionMethod = new \ReflectionMethod($class_name, $action);
                 $reflectionMethod->invokeArgs($class->newInstanceArgs(), $parameters);
             } else {
-                echo file_get_contents($config->config['app']['framework_path'] . "/pages/notfound.php");
+                require_once($config->config['app']['framework_path'] . "/pages/notfound.php");
+                //echo file_get_contents($config->config['app']['framework_path'] . "/pages/notfound.php");
             }
         } else {
-            echo file_get_contents($config->config['app']['framework_path'] . "/pages/notfound.php");
+            require_once($config->config['app']['framework_path'] . "/pages/notfound.php");
+            //echo file_get_contents($config->config['app']['framework_path'] . "/pages/notfound.php");
         }
     }
 

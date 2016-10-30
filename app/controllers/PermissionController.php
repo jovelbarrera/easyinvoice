@@ -88,7 +88,7 @@ class PermissionController extends Controller {
         $data['title'] = "Eliminar de Permiso";
 
         if ($this->isPostRequest()) {
-            $response = Permission::getInstance()->delete($id);
+            $response = Permission::getInstance()->delete(array('id' => $id));
             if (isset($response['success'])) {
                 header("Location: " . $data['base_url'] . "/permission/");
             }

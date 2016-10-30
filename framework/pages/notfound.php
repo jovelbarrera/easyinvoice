@@ -1,68 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<?php header("HTTP/1.0 404 Not Found"); ?>
+<html>
     <head>
         <meta charset="utf-8">
-        <title>No autorizado</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>404 -El recurso no existe </title>
+        <style>
+
+            @import url("//fonts.googleapis.com/css?family=Lato:400,700,400italic");
+
+            *{
+                maring: 0;
+                padding: 0;
+            }
+            body{
+                font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+                background: #2c3e50;
+                color: #ffffff;
+            }
+            a:link{
+                color: #ffffff;
+                text-decoration: none;
+            }
+            a:active{
+                color: #18bc9c;
+                text-decoration: none;
+            }
+            a:hover{
+                color: #18bc9c;
+                text-decoration: none;
+            }
+            a:visited{
+                color: #ffffff;
+                text-decoration: none;                
+            }
+
+            .bree-font{
+                font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+            }
+
+            #content{
+                margin: 0 auto;
+                width: 960px;
+            }
+
+            #logo {
+                margin: 1em;
+                float: left;
+                display: bloack;
+            }
+
+            #main-body{
+                text-align: center;
+            }
+
+            .enormous-font{
+                font-size: 10em;
+                margin-bottom: 0em;
+            }
+            .big-font{
+                font-size: 2em;
+            }
+            hr{
+                width: 25%;
+                height: 1px;
+                background: #1f3759;
+                border: 0px;
+            }
+
+
+
+        </style>
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="span12">
-                    <div class="hero-unit center">
-                        <h1>Page Not Found <small><font face="Tahoma" color="red">Error 404</font></small></h1>
-                        <br />
-                        <p>The page you requested could not be found, either contact your webmaster or try again. Use your browsers <b>Back</b> button to navigate to the page you have prevously come from</p>
-                        <p><b>Or you could just press this neat little button:</b></p>
-                        <a href="#" class="btn btn-large btn-info"><i class="icon-home icon-white"></i> Take Me Home</a>
-                    </div>
-                    <br />
-                    <div class="thumbnail">
-                        <center><h2>Recent Content :</h2></center>
-                    </div>
-                    <br />
-                    <div class="thumbnail span3 center">
-                        <h3>Try This...</h3>
-                        <p>write about your error page conent here and give some fool a good load of information or not</p>
-                        <div class="hero-unit">
-                            <img src="http://placehold.it/100x100"><!--Why Not Put a Picture To Celebrate Your 404-->
-                            <p></p>
-                        </div>
-                        <a href="#" class="btn btn-danger btn-large"><i class="icon-share icon-white"></i> Take Me There...</a>
-                    </div>
-                    <div class="thumbnail span3 center"> 
-                        <h3>Try This...</h3>
-                        <p>write about your error page conent here and give some fool a good load of information or not</p>
-                        <div class="hero-unit">
-                            <img src="http://placehold.it/100x100"><!--Why Not Put a Picture To Celebrate Your 404-->
-                            <p></p>
-                        </div>
-                        <a href="#" class="btn btn-danger btn-large"><i class="icon-share icon-white"></i> Take Me There...</a>
-                    </div>
-                    <div class="thumbnail span3 center">
-                        <h3>Try This...</h3>
-                        <p>write about your error page conent here and give some fool a good load of information or not</p>
-                        <div class="hero-unit">
-                            <img src="http://placehold.it/100x100"><!--Why Not Put a Picture To Celebrate Your 404-->
-                            <p></p>
-                        </div>
-                        <a href="#" class="btn btn-danger btn-large"><i class="icon-share icon-white"></i> Take Me There...</a>
-                    </div>
-                    <div class="thumbnail span3 center">
-                        <h3>Try This...</h3>
-                        <p>write about your error page conent here and give some fool a good load of information or not</p>
-                        <div class="hero-unit">
-                            <img src="http://placehold.it/100x100"><!--Why Not Put a Picture To Celebrate Your 404-->
-                            <p></p>
-                        </div>
-                        <a href="#" class="btn btn-danger btn-large"><i class="icon-share icon-white"></i> Take Me There...</a>
-                    </div>
-                    <br />
-                    <p></p>
-                    <!-- By ConnerT HTML & CSS Enthusiast -->  
-                </div>
+        <div id="content">
+            <div id="main-body">
+                <p class="enormous-font bree-font"> 404 </p>
+                <p class="big-font"> Oops... parece que este recurso no existe. </p>
+                <hr>
+                <p class="big-font"> <a href="http://localhost/easyinvoice">Regresar a la pagina principal</a></p>
             </div>
         </div>
-
     </body>
 </html>
+<?php die(); ?>

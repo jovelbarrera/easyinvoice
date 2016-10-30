@@ -2,20 +2,9 @@
 
 namespace app\models;
 
-/* require_once $_SERVER['DOCUMENT_ROOT'] . '/invoicemaker/framework/config.php';
-  require_once FRAMEWORK_PATH . '/utils/utils.inc.php';
-  require_once FRAMEWORK_PATH . '/base/mvc/Model.php';
- * 
- */
+use \framework\core\Model;
 
-final class User extends DBService {
-
-    const TABLE = "client";
-    const CREATE_QUERY = "INSERT INTO user (username, email, firstname, lastname, password) VALUES ('%s','%s','%s','%s','%s')";
-    const READ_QUERY = "SELECT userid, nombres, apellidos, idgrupo, estado FROM usuarios";
-    const DELETE_QUERY = "DELETE FROM user WHERE username = '%s'";
-    const WHERE_QUERY = "SELECT username, email, firstname, lastname, created_at, updated_at FROM user WHERE %s";
-    const UPDATE_QUERY = "SELECT username, email, firstname, lastname, created_at, updated_at FROM user WHERE %s";
+final class User extends Model {
 
     private static $instance;
 
@@ -27,80 +16,149 @@ final class User extends DBService {
         return self::$instance;
     }
 
-    function get_user_by_credentials($data) {
-        $this->openConnection();
-        $query = sprintf("SELECT username, email, firstname, lastname, created_at, updated_at FROM user WHERE username ='%s' AND password = '%s'", mysqli_real_escape_string($this->link, $data['username']), md5($data['password']));
-        $result = $this->link->query($query);
+    protected function __construct() {
+        parent::__construct();
+    }
 
-        $user = array();
-        if ($result->num_rows == 1) {
-            while ($row = $result->fetch_assoc()) {
-                $user = $row;
-            }
-            session_start();
-            $_SESSION['logged'] = TRUE;
-        } else {
-            $user = array(
-                "error" => "El usuario o contraseña no son validos",
-            );
-        }
-        $this->closeConection();
-        return $user;
+    private function __clone() {
+        
+    }
+
+    private function __wakeup() {
+        
+    }
+
+    function getTable() {
+        return "user";
+    }
+
+    function get_user_by_credentials($data) {
+        $fields = array(
+            "username",
+            "email",
+            "firstname",
+            "lastname",
+            "created_at",
+            "updated_at"
+        );
+        $where = array(
+            "username" => $data['username'],
+            "password" => md5($data['password'])
+        );
+        $result = $this->read($fields, $where);
+
+        return $result;
     }
 
     function user_already_exist($username) {
-        $this->openConnection();
-        $query = sprintf("SELECT username FROM user WHERE username ='%s'", mysqli_real_escape_string($this->link, $username));
-
-        $result = $this->link->query($query);
-
-        $user_exist = (boolean) $result->num_rows == 1;
-
-        $this->closeConection();
-        return $user_exist;
+        $result = parent::read(NULL, array('username' => $username));
+        return (boolean) !isset($result['error']);
     }
 
     function create($data) {
+
+        $data['username'] = $data['email'];
         if ($this->user_already_exist($data['username'])) {
             return array(
                 "error" => "Ya existe un usuario con este correo electrónico."
             );
         }
-        $this->openConnection();
-        $query = sprintf(self::CREATE_QUERY, mysqli_real_escape_string($this->link, $data['username']), mysqli_real_escape_string($this->link, $data['email']), mysqli_real_escape_string($this->link, $data['firstname']), mysqli_real_escape_string($this->link, $data['lastname']), md5($data['password']));
-
-        if ($this->link->query($query) === TRUE) {
-            $response = array(
-                "success" => "Usuario registrado exitosamente"
-            );
-        } else {
-            $response = array(
-                "error" => "Ocurrio un error inesperado."
-            );
-        }
-        $this->closeConection();
+        $data['password'] = md5($data['password']);
+        $response = parent::create($data);
         return $response;
     }
 
-    public function getCreateQuery($fields, $values) {
-        return sprintf("INSERT INTO %s (%s) VALUES (%s)", self::TABLE, $fields, $values);
-    }
+    /* const TABLE = "client";
+      const CREATE_QUERY = "INSERT INTO user (username, email, firstname, lastname, password) VALUES ('%s','%s','%s','%s','%s')";
+      const READ_QUERY = "SELECT userid, nombres, apellidos, idgrupo, estado FROM usuarios";
+      const DELETE_QUERY = "DELETE FROM user WHERE username = '%s'";
+      const WHERE_QUERY = "SELECT username, email, firstname, lastname, created_at, updated_at FROM user WHERE %s";
+      const UPDATE_QUERY = "SELECT username, email, firstname, lastname, created_at, updated_at FROM user WHERE %s";
 
-    public function getReadQuery($where) {
-        if ($where == NULL) {
-            return sprintf("SELECT * FROM %s", self::TABLE);
-        } else {
-            return sprintf("SELECT * FROM %s WHERE %s", self::TABLE, $where);
-        }
-    }
+      private static $instance;
 
-    public function getUpdateQuery($fields, $values) {
-        return sprintf("REPLACE INTO %s (%s) VALUES (%s)", self::TABLE, $fields, $values);
-    }
+      public static function getInstance() {
+      if (null === self::$instance) {
+      self::$instance = new static();
+      }
 
-    public function getDeleteQuery($where) {
-        return sprintf("DELETE FROM %s WHERE %s", self::TABLE, $where);
-    }
+      return self::$instance;
+      }
+
+      function get_user_by_credentials($data) {
+      $this->openConnection();
+      $query = sprintf("SELECT username, email, firstname, lastname, created_at, updated_at FROM user WHERE username ='%s' AND password = '%s'", mysqli_real_escape_string($this->link, $data['username']), md5($data['password']));
+      $result = $this->link->query($query);
+
+      $user = array();
+      if ($result->num_rows == 1) {
+      while ($row = $result->fetch_assoc()) {
+      $user = $row;
+      }
+      session_start();
+      $_SESSION['logged'] = TRUE;
+      } else {
+      $user = array(
+      "error" => "El usuario o contraseña no son validos",
+      );
+      }
+      $this->closeConection();
+      return $user;
+      }
+
+      function user_already_exist($username) {
+      $this->openConnection();
+      $query = sprintf("SELECT username FROM user WHERE username ='%s'", mysqli_real_escape_string($this->link, $username));
+
+      $result = $this->link->query($query);
+
+      $user_exist = (boolean) $result->num_rows == 1;
+
+      $this->closeConection();
+      return $user_exist;
+      }
+
+      function create($data) {
+      if ($this->user_already_exist($data['username'])) {
+      return array(
+      "error" => "Ya existe un usuario con este correo electrónico."
+      );
+      }
+      $this->openConnection();
+      $query = sprintf(self::CREATE_QUERY, mysqli_real_escape_string($this->link, $data['username']), mysqli_real_escape_string($this->link, $data['email']), mysqli_real_escape_string($this->link, $data['firstname']), mysqli_real_escape_string($this->link, $data['lastname']), md5($data['password']));
+
+      if ($this->link->query($query) === TRUE) {
+      $response = array(
+      "success" => "Usuario registrado exitosamente"
+      );
+      } else {
+      $response = array(
+      "error" => "Ocurrio un error inesperado."
+      );
+      }
+      $this->closeConection();
+      return $response;
+      }
+
+      public function getCreateQuery($fields, $values) {
+      return sprintf("INSERT INTO %s (%s) VALUES (%s)", self::TABLE, $fields, $values);
+      }
+
+      public function getReadQuery($where) {
+      if ($where == NULL) {
+      return sprintf("SELECT * FROM %s", self::TABLE);
+      } else {
+      return sprintf("SELECT * FROM %s WHERE %s", self::TABLE, $where);
+      }
+      }
+
+      public function getUpdateQuery($fields, $values) {
+      return sprintf("REPLACE INTO %s (%s) VALUES (%s)", self::TABLE, $fields, $values);
+      }
+
+      public function getDeleteQuery($where) {
+      return sprintf("DELETE FROM %s WHERE %s", self::TABLE, $where);
+      } */
 
     /**
      * Model implementation
