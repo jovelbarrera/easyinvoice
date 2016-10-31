@@ -19,7 +19,7 @@ final class Dispatcher {
         $route_exist = array_key_exists($route_name, $routes);
 
         $config = new Config();
-
+        
         if ($route_exist) {
             if (count($parameters) >= count($routes[$route_name])) {
                 $class_name = 'app\controllers\\' . ucfirst($controller) . "Controller";
@@ -28,11 +28,11 @@ final class Dispatcher {
                 $reflectionMethod->invokeArgs($class->newInstanceArgs(), $parameters);
             } else {
                 require_once($config->config['app']['framework_path'] . "/pages/notfound.php");
-                //echo file_get_contents($config->config['app']['framework_path'] . "/pages/notfound.php");
+//                echo file_get_contents($config->config['app']['framework_path'] . "/pages/notfound.php");
             }
         } else {
             require_once($config->config['app']['framework_path'] . "/pages/notfound.php");
-            //echo file_get_contents($config->config['app']['framework_path'] . "/pages/notfound.php");
+//            echo file_get_contents($config->config['app']['framework_path'] . "/pages/notfound.php");
         }
     }
 

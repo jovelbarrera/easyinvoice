@@ -6,7 +6,9 @@ class Routes {
 
     var $routes = array();
 
-    function __construct() {
+    function __construct() {        
+        $this->routes["home/index"] = array();
+        
         $this->routes["client/index"] = array();
         $this->routes["client/create"] = array();
         $this->routes["client/edit"] = array("id");
