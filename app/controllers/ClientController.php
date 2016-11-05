@@ -31,7 +31,7 @@ class ClientController extends Controller {
 
         $data = array();
         $data['base_url'] = $this->config['app']['domain_name'];
-        $data ['title'] = "Detalle de usuario";
+        $data ['title'] = "Detalle de cliente";
 
         if (isset($response["error"])) {
             $data['message'] = $response['error'];

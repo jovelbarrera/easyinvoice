@@ -4,7 +4,7 @@
     $permissions = Helper::getValueSecurely($data['data'], 'permissions', '');
     $granted_permissions = Helper::getValueSecurely($data['data'], 'granted_permissions', '');
     ?>
-    <h2 class="form-signin-heading">Permisos <?= Helper::getValueSecurely($role, 'name', '') ?></h2>
+    <h2 class="form-signin-heading">Permisos: <?= Helper::getValueSecurely($role, 'name', '') ?></h2>
     <?php
     if ($permissions == '' or $granted_permissions == '') {
         $data['error'] = "Ocurrió un error";
@@ -21,6 +21,9 @@
         <?php
     } else {
         ?>
+        <div class="alert alert-danger">
+            <strong>¡IMPORTANTE!</strong> Cualquier cambio a esta configuración afectará a los usuarios vinculados.
+        </div>
         <form action="<?= $data['base_url'] ?>/role/assign/<?= Helper::getValueSecurely($role, 'id', '') ?>" method="POST">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -31,12 +34,12 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($permissions as $permission_key => $permission) {
-                        $permission_name = Helper::getValueSecurely($permission, 'name', '');
-                        $permission_id = Helper::getValueSecurely($permission, 'id', '');
+                    foreach ($permissions as $key => $user) {
+                        $permission_name = Helper::getValueSecurely($user, 'name', '');
+                        $permission_id = Helper::getValueSecurely($user, 'id', '');
                         $is_granted = FALSE;
                         foreach ($granted_permissions as $granted_permission_key => $granted_permission) {
-                            if (Helper::getValueSecurely($permission, 'id', '') == Helper::getValueSecurely($granted_permission, 'permission', '')) {
+                            if (Helper::getValueSecurely($user, 'id', '') == Helper::getValueSecurely($granted_permission, 'permission', '')) {
                                 $is_granted = TRUE;
                             }
                         }

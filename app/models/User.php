@@ -68,6 +68,22 @@ final class User extends Model {
         return $response;
     }
 
+    function update($data) {
+        $user_data = array();
+        foreach ($data as $key => $value) {
+            if ($key == 'password' and empty($value)) {
+                continue;
+            } else if ($key == 'password') {
+                $data['password'] = md5($data['password']);
+                $user_data[$key] = $value;
+            } else {
+                $user_data[$key] = $value;
+            }
+        }
+        $response = parent::update($user_data);
+        return $response;
+    }
+
     /* const TABLE = "client";
       const CREATE_QUERY = "INSERT INTO user (username, email, firstname, lastname, password) VALUES ('%s','%s','%s','%s','%s')";
       const READ_QUERY = "SELECT userid, nombres, apellidos, idgrupo, estado FROM usuarios";

@@ -13,9 +13,8 @@ class Routes {
         $this->routes["client/create"] = array();
         $this->routes["client/edit"] = array("id");
         $this->routes["client/detail"] = array("id");
-        $this->routes["client/delete"] = array();
-        
-        
+        $this->routes["client/delete"] = array("id");
+                
         $this->routes["permission/index"] = array();
         $this->routes["permission/create"] = array();
         $this->routes["permission/edit"] = array("id");
@@ -26,12 +25,15 @@ class Routes {
         $this->routes["role/create"] = array();
         $this->routes["role/edit"] = array("id");
         $this->routes["role/detail"] = array("id");
-        $this->routes["role/delete"] = array();        
+        $this->routes["role/delete"] = array("id");        
         $this->routes["role/assign"] = array("role_id");
         
         $this->routes["user/index"] = array();
-        $this->routes["user/login"] = array();
         $this->routes["user/create"] = array();
+        $this->routes["user/edit"] = array("id");
+        $this->routes["user/detail"] = array("id");
+        $this->routes["user/delete"] = array("id");
+        $this->routes["user/login"] = array();
     }
 
 }

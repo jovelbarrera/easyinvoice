@@ -72,7 +72,6 @@ abstract class Model implements IModel {
     public function create($data) {
         $this->openConnection();
         $query = $this->getCreateQuery($this->getTable(), $data);
-
         if ($this->link->query($query) === TRUE) {
             $response = array(
                 "id" => $this->link->insert_id
@@ -112,6 +111,7 @@ abstract class Model implements IModel {
         $this->openConnection();
         $sql_data = Utils::arrayToUpdateQuery($this->link, $data);
 
+        
         $query = $this->getUpdateQuery($this->getTable(), $sql_data['id'], $sql_data['values']);
 
         if ($this->link->query($query) === TRUE) {
@@ -148,7 +148,6 @@ abstract class Model implements IModel {
         $this->openConnection();
 
         $result = $this->link->query(mysqli_real_escape_string($this->link, $query));
-
         $response = array();
         while ($row = $result->fetch_assoc()) {
             array_push($response, $row);

@@ -13,8 +13,21 @@ $user_data = isset($data['data']) ? $data['data'] : array();
             <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellidos" required="" value="<?= Helper::getValueSecurely($user_data, 'lastname', '') ?>">
             <label for="password">Contraseña</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required="">
+            <label for="password">Rol</label>
+            <select class="form-control" name="role">
+                <?php
+                $roles = isset($data['roles']) ? $data['roles'] : array();
+                print_r($roles);
+                foreach ($roles as $role) {
+                    ?>
+                    <option value="<?= Helper::getValueSecurely($role, 'id', '') ?>"><?= Helper::getValueSecurely($role, 'name', '') ?></option>
+                    <?php
+                }
+                ?>
+            </select>
             <div>&nbsp;</div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Registrar</button>
+            <a href="<?= $data['base_url'] ?>/user/index" class="btn btn-default">Regresar</a>
+            <button class="btn btn-primary" type="submit">Registrar</button>
         </form>
     </div>
 </div>

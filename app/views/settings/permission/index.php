@@ -33,18 +33,18 @@
             </thead>
             <tbody>
                 <?php
-                foreach ($data['data'] as $permission_key => $permission) {
+                foreach ($data['data'] as $key => $user) {
                     ?>
                     <tr>
-                        <td><?= Helper::getValueSecurely($permission, 'id', '') ?></td>
-                        <td><?= Helper::getValueSecurely($permission, 'name', '') ?></td>
-                        <td><?= Helper::getValueSecurely($permission, 'controller', '') ?></td>
-                        <td><?= Helper::getValueSecurely($permission, 'created_at', '') ?></td>
-                        <td><?= Helper::getValueSecurely($permission, 'updated_at', '') ?></td>
+                        <td><?= Helper::getValueSecurely($user, 'id', '') ?></td>
+                        <td><?= Helper::getValueSecurely($user, 'name', '') ?></td>
+                        <td><?= Helper::getValueSecurely($user, 'controller', '') ?></td>
+                        <td><?= Helper::getValueSecurely($user, 'created_at', '') ?></td>
+                        <td><?= Helper::getValueSecurely($user, 'updated_at', '') ?></td>
                         <td>
-                            <a href="<?= $data['base_url'] ?>/permission/detail/<?= Helper::getValueSecurely($permission, 'id', '') ?>" class="btn btn-success" >Ver</a>
-                            <a href="<?= $data['base_url'] ?>/permission/edit/<?= Helper::getValueSecurely($permission, 'id', '') ?>" class="btn btn-primary" >Editar</a>
-                            <a href="<?= $data['base_url'] ?>/permission/delete/<?= Helper::getValueSecurely($permission, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
+                            <a href="<?= $data['base_url'] ?>/permission/detail/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-success" >Ver</a>
+                            <a href="<?= $data['base_url'] ?>/permission/edit/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-primary" >Editar</a>
+                            <a href="<?= $data['base_url'] ?>/permission/delete/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
                         </td>
                     </tr>
                     <?php

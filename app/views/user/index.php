@@ -1,8 +1,8 @@
 <div class="container">
-    <h2 class="form-signin-heading">Roles</h2>
+    <h2 class="form-signin-heading">Usuarios</h2>
     <div class="row">
         <div class="col-lg-12">
-            <a href="<?= $data['base_url'] ?>/role/create" class="btn btn-info" >Agregar</a>
+            <a href="<?= $data['base_url'] ?>/user/create" class="btn btn-info" >Agregar</a>
         </div>
         <div>&nbsp;</div>
     </div>
@@ -23,11 +23,11 @@
         <table class="table table-striped table-hover ">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Usuario</th>
                     <th>Nombre</th>
-                    <th>Creación</th>
-                    <th>Último cambio</th>
-                    <th>Acciones</th>
+                    <th>Apellido</th>
+                    <th>Rol</th>
+                    <th>Accion</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,14 +35,14 @@
                 foreach ($data['data'] as $key => $user) {
                     ?>
                     <tr>
-                        <td><?= Helper::getValueSecurely($user, 'id', '') ?></td>
-                        <td><?= Helper::getValueSecurely($user, 'name', '') ?></td>
-                        <td><?= Helper::getValueSecurely($user, 'created_at', '') ?></td>
-                        <td><?= Helper::getValueSecurely($user, 'updated_at', '') ?></td>
+                        <td><?= Helper::getValueSecurely($user, 'username', '') ?></td>
+                        <td><?= Helper::getValueSecurely($user, 'firstname', '') ?></td>
+                        <td><?= Helper::getValueSecurely($user, 'lastname', '') ?></td>
+                        <td><?= Helper::getValueSecurely($user, 'role_name', '') ?></td>
                         <td>
-                            <a href="<?= $data['base_url'] ?>/role/assign/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-success" >Permisos</a>
-                            <a href="<?= $data['base_url'] ?>/role/edit/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-primary" >Editar</a>
-                            <a href="<?= $data['base_url'] ?>/role/delete/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
+                            <a href="<?= $data['base_url'] ?>/user/detail/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-success" >Ver</a>
+                            <a href="<?= $data['base_url'] ?>/user/edit/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-primary" >Editar</a>
+                            <a href="<?= $data['base_url'] ?>/user/delete/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
                         </td>
                     </tr>
                     <?php

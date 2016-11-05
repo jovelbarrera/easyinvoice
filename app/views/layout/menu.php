@@ -17,6 +17,7 @@
                         <li><a href="<?= $data['base_url'] ?>/client/create">Registrar Cliente</a></li>
                     </ul>
                 </li>
+                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Configuración <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -28,6 +29,30 @@
                         <li class="divider"></li>
                         <li><a href="<?= $data['base_url'] ?>/user">Usuarios</a></li>
                         <li><a href="<?= $data['base_url'] ?>/user/create">Nuevo Usuario</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Impuestos <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="<?= $data['base_url'] ?>/tax">Impuestos</a></li>
+                        <li><a href="<?= $data['base_url'] ?>/tax/create">Nuevo impuesto</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Produtos <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="<?= $data['base_url'] ?>/product">Productos</a></li>
+                        <li><a href="<?= $data['base_url'] ?>/product/create">Nuevo impuesto</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Facturas <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="<?= $data['base_url'] ?>/invoice">Facturas</a></li>
+                        <li><a href="<?= $data['base_url'] ?>/invoice/create">Nueva factura</a></li>
                     </ul>
                 </li>
             </ul>

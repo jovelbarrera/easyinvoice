@@ -19,7 +19,7 @@ final class Dispatcher {
         $route_exist = array_key_exists($route_name, $routes);
 
         $config = new Config();
-        
+
         if ($route_exist) {
             if (count($parameters) >= count($routes[$route_name])) {
                 $class_name = 'app\controllers\\' . ucfirst($controller) . "Controller";
