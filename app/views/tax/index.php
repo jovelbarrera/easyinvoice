@@ -1,8 +1,8 @@
 <div class="container">
-    <h2 class="form-signin-heading">Clientes</h2>
+    <h2 class="form-signin-heading">Impuestos</h2>
     <div class="row">
         <div class="col-lg-12">
-            <a href="<?= $data['base_url'] ?>/client/create" class="btn btn-info" >Agregar</a>
+            <a href="<?= $data['base_url'] ?>/tax/create" class="btn btn-info" >Agregar</a>
         </div>
         <div>&nbsp;</div>
     </div>
@@ -25,7 +25,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Telefono</th>
+                    <th>Valor</th>
                     <th>Accion</th>
                 </tr>
             </thead>
@@ -36,11 +36,11 @@
                     <tr>
                         <td><?= Helper::getValueSecurely($product, 'id', '') ?></td>
                         <td><?= Helper::getValueSecurely($product, 'name', '') ?></td>
-                        <td><?= Helper::getValueSecurely($product, 'phone', '') ?></td>
+                        <td><?= Helper::getValueSecurely($product, 'percentage', '') ?></td>
                         <td>
-                            <a href="<?= $data['base_url'] ?>/client/detail/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-success" >Ver</a>
-                            <a href="<?= $data['base_url'] ?>/client/edit/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-primary" >Editar</a>
-                            <a href="<?= $data['base_url'] ?>/client/delete/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
+                            <a href="<?= $data['base_url'] ?>/tax/detail/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-success" >Ver</a>
+                            <a href="<?= $data['base_url'] ?>/tax/edit/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-primary" >Editar</a>
+                            <a href="<?= $data['base_url'] ?>/tax/delete/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
                         </td>
                     </tr>
                     <?php

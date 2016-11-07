@@ -1,8 +1,8 @@
 <div class="container">
-    <h2 class="form-signin-heading">Clientes</h2>
+    <h2 class="form-signin-heading">Productos</h2>
     <div class="row">
         <div class="col-lg-12">
-            <a href="<?= $data['base_url'] ?>/client/create" class="btn btn-info" >Agregar</a>
+            <a href="<?= $data['base_url'] ?>/product/create" class="btn btn-info" >Agregar</a>
         </div>
         <div>&nbsp;</div>
     </div>
@@ -23,10 +23,9 @@
         <table class="table table-striped table-hover ">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Telefono</th>
-                    <th>Accion</th>
+                    <th>SKU</th>
+                    <th>Name</th>
+                    <th>Price</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,13 +33,13 @@
                 foreach ($data['data'] as $key => $product) {
                     ?>
                     <tr>
-                        <td><?= Helper::getValueSecurely($product, 'id', '') ?></td>
+                        <td><?= Helper::getValueSecurely($product, 'sku', '') ?></td>
                         <td><?= Helper::getValueSecurely($product, 'name', '') ?></td>
-                        <td><?= Helper::getValueSecurely($product, 'phone', '') ?></td>
+                        <td>$ <?= money_format('%i', Helper::getValueSecurely($product, 'price', '')) ?></td>
                         <td>
-                            <a href="<?= $data['base_url'] ?>/client/detail/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-success" >Ver</a>
-                            <a href="<?= $data['base_url'] ?>/client/edit/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-primary" >Editar</a>
-                            <a href="<?= $data['base_url'] ?>/client/delete/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
+                            <a href="<?= $data['base_url'] ?>/product/detail/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-success" >Ver</a>
+                            <a href="<?= $data['base_url'] ?>/product/edit/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-primary" >Editar</a>
+                            <a href="<?= $data['base_url'] ?>/product/delete/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
                         </td>
                     </tr>
                     <?php

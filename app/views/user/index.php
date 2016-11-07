@@ -32,17 +32,17 @@
             </thead>
             <tbody>
                 <?php
-                foreach ($data['data'] as $key => $user) {
+                foreach ($data['data'] as $key => $product) {
                     ?>
                     <tr>
-                        <td><?= Helper::getValueSecurely($user, 'username', '') ?></td>
-                        <td><?= Helper::getValueSecurely($user, 'firstname', '') ?></td>
-                        <td><?= Helper::getValueSecurely($user, 'lastname', '') ?></td>
-                        <td><?= Helper::getValueSecurely($user, 'role_name', '') ?></td>
+                        <td><?= Helper::getValueSecurely($product, 'username', '') ?></td>
+                        <td><?= Helper::getValueSecurely($product, 'firstname', '') ?></td>
+                        <td><?= Helper::getValueSecurely($product, 'lastname', '') ?></td>
+                        <td><?= Helper::getValueSecurely($product, 'role_name', '') ?></td>
                         <td>
-                            <a href="<?= $data['base_url'] ?>/user/detail/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-success" >Ver</a>
-                            <a href="<?= $data['base_url'] ?>/user/edit/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-primary" >Editar</a>
-                            <a href="<?= $data['base_url'] ?>/user/delete/<?= Helper::getValueSecurely($user, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
+                            <a href="<?= $data['base_url'] ?>/user/detail/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-success" >Ver</a>
+                            <a href="<?= $data['base_url'] ?>/user/edit/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-primary" >Editar</a>
+                            <a href="<?= $data['base_url'] ?>/user/delete/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
                         </td>
                     </tr>
                     <?php

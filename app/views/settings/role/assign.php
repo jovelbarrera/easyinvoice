@@ -34,12 +34,12 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($permissions as $key => $user) {
-                        $permission_name = Helper::getValueSecurely($user, 'name', '');
-                        $permission_id = Helper::getValueSecurely($user, 'id', '');
+                    foreach ($permissions as $key => $permission) {
+                        $permission_name = Helper::getValueSecurely($permission, 'name', '');
+                        $permission_id = Helper::getValueSecurely($permission, 'id', '');
                         $is_granted = FALSE;
                         foreach ($granted_permissions as $granted_permission_key => $granted_permission) {
-                            if (Helper::getValueSecurely($user, 'id', '') == Helper::getValueSecurely($granted_permission, 'permission', '')) {
+                            if (Helper::getValueSecurely($permission, 'id', '') == Helper::getValueSecurely($granted_permission, 'permission', '')) {
                                 $is_granted = TRUE;
                             }
                         }

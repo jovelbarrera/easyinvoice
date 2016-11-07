@@ -44,7 +44,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Produtos <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="<?= $data['base_url'] ?>/product">Productos</a></li>
-                        <li><a href="<?= $data['base_url'] ?>/product/create">Nuevo impuesto</a></li>
+                        <li><a href="<?= $data['base_url'] ?>/product/create">Nuevo producto</a></li>
                     </ul>
                 </li>
                 

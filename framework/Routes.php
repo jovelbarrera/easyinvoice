@@ -34,6 +34,18 @@ class Routes {
         $this->routes["user/detail"] = array("id");
         $this->routes["user/delete"] = array("id");
         $this->routes["user/login"] = array();
+        
+        $this->routes["tax/index"] = array();
+        $this->routes["tax/create"] = array();
+        $this->routes["tax/edit"] = array("id");
+        $this->routes["tax/detail"] = array("id");
+        $this->routes["tax/delete"] = array("id");
+        
+        $this->routes["product/index"] = array();
+        $this->routes["product/create"] = array();
+        $this->routes["product/edit"] = array("id");
+        $this->routes["product/detail"] = array("id");
+        $this->routes["product/delete"] = array("id");
     }
 
 }
