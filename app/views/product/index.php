@@ -24,8 +24,8 @@
             <thead>
                 <tr>
                     <th>SKU</th>
-                    <th>Name</th>
-                    <th>Price</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
                 </tr>
             </thead>
             <tbody>

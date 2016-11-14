@@ -1,8 +1,8 @@
 <div class="container">
-    <h2 class="form-signin-heading">Clientes</h2>
+    <h2 class="form-signin-heading">Facturas</h2>
     <div class="row">
         <div class="col-lg-12">
-            <a href="<?= $data['base_url'] ?>/client/create" class="btn btn-info" >Agregar</a>
+            <a href="<?= $data['base_url'] ?>/invoice/create" class="btn btn-info" >Agregar</a>
         </div>
         <div>&nbsp;</div>
     </div>
@@ -24,23 +24,27 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Telefono</th>
+                    <th>Cliente</th> 
+                    <th>Fecha</th>                    
+                    <th>Monto</th>
+                    <th>Estado</th>
                     <th>Accion</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                foreach ($data['data'] as $key => $product) {
+                foreach ($data['data'] as $key => $invoice) {
                     ?>
                     <tr>
-                        <td><?= Helper::getValueSecurely($product, 'id', '') ?></td>
-                        <td><?= Helper::getValueSecurely($product, 'name', '') ?></td>
-                        <td><?= Helper::getValueSecurely($product, 'phone', '') ?></td>
+                        <td><?= Helper::getValueSecurely($invoice, 'id', '') ?></td>
+                        <td><?= Helper::getValueSecurely($invoice, 'client_name', '') ?></td>
+                        <td><?= Helper::getValueSecurely($invoice, 'date', '') ?></td>
+                        <td>$ <?= Helper::getValueSecurely($invoice, 'total', '') ?></td>
+                        <td><?= Helper::getValueSecurely($invoice, 'paid', '') == 1 ? 'Pagado' : 'Pendiente' ?></td>
                         <td>
-                            <a href="<?= $data['base_url'] ?>/client/detail/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-success" >Ver</a>
-                            <a href="<?= $data['base_url'] ?>/client/edit/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-primary" >Editar</a>
-                            <a href="<?= $data['base_url'] ?>/client/delete/<?= Helper::getValueSecurely($product, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
+                            <a href="<?= $data['base_url'] ?>/invoice/detail/<?= Helper::getValueSecurely($invoice, 'id', '') ?>" class="btn btn-success" >Ver</a>
+                            <a href="<?= $data['base_url'] ?>/invoice/edit/<?= Helper::getValueSecurely($invoice, 'id', '') ?>" class="btn btn-primary" >Editar</a>
+                            <a href="<?= $data['base_url'] ?>/invoice/delete/<?= Helper::getValueSecurely($invoice, 'id', '') ?>" class="btn btn-danger" >Eliminar</a>
                         </td>
                     </tr>
                     <?php

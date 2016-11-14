@@ -54,7 +54,7 @@ class Routes {
         $this->routes["payment/delete"] = array("id");
 
         $this->routes["invoice/index"] = array();
-        $this->routes["invoice/create"] = array("id");
+        $this->routes["invoice/create"] = array();
         $this->routes["invoice/edit"] = array("id");
         $this->routes["invoice/detail"] = array("id");
         $this->routes["invoice/delete"] = array("id");
